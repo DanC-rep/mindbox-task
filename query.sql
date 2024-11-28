@@ -1,7 +1,3 @@
-DROP TABLE IF EXISTS ProductCategories;
-DROP TABLE IF EXISTS Products;
-DROP TABLE IF EXISTS Categories;
-
 CREATE TABLE Categories 
 (
     Id INT PRIMARY KEY,
@@ -24,7 +20,7 @@ INSERT INTO Categories VALUES
     (2, 'Category 2'),
     (3, 'Category 3');
     
-CREATE TABLE ProductCategories
+CREATE TABLE ProductsCategories
 (
     ProductId INT,
     CategoryId INT,
@@ -33,14 +29,14 @@ CREATE TABLE ProductCategories
     FOREIGN KEY (CategoryId) REFERENCES Categories(Id)
 );
 
-INSERT INTO ProductCategories VALUES
+INSERT INTO ProductsCategories VALUES
     (1, 1),
     (1, 2),
     (2, 3);
     
 SELECT P.Name, C.Name
 FROM Products P
-LEFT JOIN ProductCategories PC
+LEFT JOIN ProductsCategories PC
     ON P.Id = PC.ProductId
 LEFT JOIN Categories C
     ON C.Id = PC.CategoryId;
